@@ -17,13 +17,15 @@ class App extends React.Component {
       <Router>
         <div className='container'>
           <Navbar />
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/battle' component={Battle} />
-            <Route path='/battle/results' component={Results} />
-            <Route path='/popular' component={Popular} />
-            <Route component={NotFound} />
-          </Switch>
+          <div>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/battle' component={Battle} />
+              <Route path='/battle/results' component={Results} />
+              <Route path='/popular' component={Popular} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
         </div>
       </Router>
     )

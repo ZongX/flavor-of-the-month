@@ -2,17 +2,19 @@ var axios = require('axios');
 
 function getProfile (username) {
   return axios.get('https://api.github.com/users/' + username).then((res) => {
+    console.log("Hey", res);
     return res.data;
   });
 }
 
 function getRepos(username) {
-  return axios.get('https://api.github.com/users' + username + '/repos' + '&per_page=100').then((res) => {
+  return axios.get('https://api.github.com/users/' + username + '/repos').then((res) => {
     return res;
   });
 }
 
 function getStarCount(repos) {
+  console.log("getStarCount", repos);
   return repos.data.reduce((count, repo) => {
     return count + repo.stargazers_count;
   }, 0);
@@ -20,7 +22,9 @@ function getStarCount(repos) {
 
 function calcScore(profile, repos) {
   var followers = profile.followers;
+  console.log("Followers!", followers);
   var totalStars = getStarCount(repos);
+  console.log("Stars!", totalStars);
 
   return (followers * 5 + totalStars * 2);
 }
@@ -37,7 +41,7 @@ function getUserData(player) {
 
     return {
       profile: profile,
-      score: calculateScore(profile, repos)
+      score: calcScore(profile, repos)
     }
   });
 }

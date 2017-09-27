@@ -1,12 +1,13 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 var api = require('../utils/api');
+var Loading = require('./loading');
 
 function LoadingRes() {
   return (
     <div className="text-center">
       <p>Loading response from the Github API</p>
-      <i className="fa fa-4x fa-rocket fa-fw"></i>
+      <i className="fa fa-4x fa-rocket fa-fw fa-spin"></i>
     </div>
   )
 }
@@ -100,7 +101,7 @@ class Popular extends React.Component {
           selectedLanguage={this.state.selectedLanguage}
           onSelect={this.updateLanguage} />
         {!this.state.repos
-          ? <LoadingRes/>
+          ? <LoadingRes />
           : <RepoGrid repos={this.state.repos} />}
       </div>
     )
