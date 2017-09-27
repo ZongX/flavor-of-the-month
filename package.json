@@ -4,7 +4,8 @@
   "description": "App designed to help users stay up to track with what languages are most popular in the developer world",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "build": "NODE_ENV='production' webpack -p"
   },
   "babel": {
     "presets": [
